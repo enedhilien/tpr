@@ -1,0 +1,1 @@
+mpiexec -machinefile ../mpihosts -np 2 ./zad1.py async 1 1000	
