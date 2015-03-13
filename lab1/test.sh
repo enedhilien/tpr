@@ -9,10 +9,17 @@ touch sync.out
 echo "Msg[B];Send[us];Recv[us]" > async.out
 echo "Msg[B];Send[us];Recv[us]" > sync.out
 
+if [ $1 = "c" ]; then
+	make
+	PROGRAM="./send_recv"
+else
+	PROGRAM="./zad1.py"
+fi
+
 for BYTE in $BYTES
 do
-	mpiexec -machinefile ../mpihosts -np 2 ./zad1.py async $BYTE $COUNT >> async.out	
-	mpiexec -machinefile ../mpihosts -np 2 ./zad1.py sync $BYTE $COUNT >> sync.out
+	mpiexec -machinefile ../mpihosts -np 2 ${PROGRAM} async $BYTE $COUNT >> async.out
+	mpiexec -machinefile ../mpihosts -np 2 ${PROGRAM} sync $BYTE $COUNT >> sync.out
 done
 
 
