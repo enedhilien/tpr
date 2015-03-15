@@ -57,6 +57,7 @@ int main(int argc, char** argv) {
         one_message_send_time = 1e6 * (end_time - start_time) / times;
         MPI_Send(&one_message_send_time, 1, MPI_DOUBLE_INT, 1, 2, MPI_COMM_WORLD);
     } else if (world_rank == 1) {
+        start_time = MPI_Wtime();
         for (int i = 0; i < times; ++i) {
             MPI_Recv(payload, size, MPI_UNSIGNED_CHAR, 0, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
         }
