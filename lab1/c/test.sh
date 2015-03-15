@@ -14,7 +14,7 @@ PROGRAM="./send_recv"
 
 for BYTE in $BYTES
 do
-	mpiexec -recvtimeout 100 -machinefile ../mpihosts -np 2 ${PROGRAM} async $BYTE $COUNT >> aync.out
+	mpiexec -recvtimeout 100 -machinefile ../mpihosts -np 2 ${PROGRAM} async $BYTE $COUNT >> async.out
 	mpiexec -recvtimeout 100 -machinefile ../mpihosts -np 2 ${PROGRAM} sync $BYTE $COUNT >> sync.out
 done
 
