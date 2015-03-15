@@ -16,8 +16,8 @@ int main(int argc, char** argv) {
     MPI_Comm_size(MPI_COMM_WORLD, &world_size);
     int async, size, times;
 
-    if(argc < 4 || (strcmp(argv[1], "argc") && strcmp(argv[1], "sync") )){
-        printf("Usage %s <async|sync> <size> <times>");
+    if(argc < 4 || (strcmp(argv[1], "async") && strcmp(argv[1], "sync") )){
+        printf("Usage %s <async|sync> <size> <times>", argv[0]);
         MPI_Abort(MPI_COMM_WORLD, 1);
     }
     async = !strcmp(argv[1], "async");
@@ -32,7 +32,7 @@ int main(int argc, char** argv) {
 
     //allocating buffer
     srand((int) MPI_Wtime());
-    unsigned char payload[] = malloc(sizeof(unsigned char) * size);
+    unsigned char * payload = malloc(sizeof(unsigned char) * size);
 
     double start_time, end_time, one_message_send_time, other_node_statistic;
     int number;
@@ -45,20 +45,20 @@ int main(int argc, char** argv) {
         start_time = MPI_Wtime();
         if (async){
             for (int i = 0; i < times; ++i) {
-                MPI_Isend(buffer, size, MPI_UNSIGNED_CHAR, 1, 1, MPI_COMM_WORLD, myRequest);
+                MPI_Isend(payload, size, MPI_UNSIGNED_CHAR, 1, 1, MPI_COMM_WORLD, &myRequest);
             }
         }
         else{
             for (int i = 0; i < times; ++i) {
-                MPI_Send(buffer, size, MPI_UNSIGNED_CHAR, 1, 1, MPI_COMM_WORLD);
+                MPI_Send(payload, size, MPI_UNSIGNED_CHAR, 1, 1, MPI_COMM_WORLD);
             }
         }
         end_time = MPI_Wtime();
         one_message_send_time = 1e6 * (end_time - start_time) / times;
-        MPI_Send(&one_message_send_time, 1, MPI_DOUBLE_INT, 1, 2, MPI_COMM_WORLD, myRequest);
+        MPI_Send(&one_message_send_time, 1, MPI_DOUBLE_INT, 1, 2, MPI_COMM_WORLD);
     } else if (world_rank == 1) {
         for (int i = 0; i < times; ++i) {
-            MPI_Recv(buffer, size, MPI_UNSIGNED_CHAR, 0, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+            MPI_Recv(payload, size, MPI_UNSIGNED_CHAR, 0, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
         }
         one_message_send_time = 1e6 * (end_time - start_time) / times;
         MPI_Recv(&other_node_statistic, 1, MPI_DOUBLE_INT, 0, 2, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
