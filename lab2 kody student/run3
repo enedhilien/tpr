@@ -1,0 +1,14 @@
+clear
+echo "======================== ZADANIE 3 ====================="
+echo "------------------------------------------jednordzeniowe"
+echo "--------------------------------------------------------3pr-1rdz"
+mpiexec -machinefile ./mpihosts-3pr-1rdz -np 3 ./zad3.py
+echo "--------------------------------------------------------5pr-1rdz"
+mpiexec -machinefile ./mpihosts-5pr-1rdz -np 5 ./zad3.py
+echo "--------------------------------------------------------8pr-1rdz"
+mpiexec -machinefile ./mpihosts-8pr-1rdz -np 8 ./zad3.py
+echo "------------------------------------------wielordzeniowe"
+echo "--------------------------------------------------------2pr-4rdz"
+mpiexec -machinefile ./mpihosts-2pr-4rdz -np 2 ./zad3.py
+echo "--------------------------------------------------------4pr-4rdz"
+mpiexec -machinefile ./mpihosts-4pr-4rdz -np 4 ./zad3.py
