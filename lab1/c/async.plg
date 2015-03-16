@@ -1,0 +1,16 @@
+set key autotitle columnhead
+set datafile separator ';'
+
+#set terminal png size 1400,1300 
+#set output 'sync.png'
+set terminal x11
+set autoscale
+
+set xlabel "data size [B]"
+set ylabel "time [us]"
+set logscale x
+
+plot "async.out" using 1:2 with lines,  \
+	'' using 1:3 with lines
+
+pause -1
