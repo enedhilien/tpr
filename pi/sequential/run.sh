@@ -11,7 +11,7 @@ mkdir $NOW
 cp rpi.c ./$NOW
 cd $NOW
 
-chmod u+x ./rpi.c
+chmod u+x ./pi.py
 
 mpiexec -np 1 ./rpi 1000 >> rpi.csv
 #mpiexec -np 1 ./pi 10000 >> pi.txt
