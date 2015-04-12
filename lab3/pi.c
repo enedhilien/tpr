@@ -65,7 +65,7 @@ int main(int argc, char** argv) {
 	if (rank == 0){
 		pi = (4.0 * (long double)insideSum) / (long double)(problemSize); 
 		t4 = MPI_Wtime();
-		printf("%lld, %lld, %d, %f, %f, %f, %f, %Lf\n", problemSize, sizePerProc, nprocs, t1, t2, t3, t4, pi);
+		printf("%lld, %lld, %d, %f, %Lf\n", problemSize, sizePerProc, nprocs, t4 - t1,pi);
 	}
 	
 	MPI_Finalize();

@@ -2,9 +2,9 @@
 
 echo $(date) "start"
 
-out=result_$(date +'%s').out
+out=result.out #_$(date +'%s').out
 touch $out
-echo "Problem size, size per proc, procs, t1, t2, t3, t4, pi" > $out
+echo "problem_size, size_per_proc, procs, time, pi" > $out
 
 make EXEC="pi"
 
@@ -18,7 +18,7 @@ do
 	mpiexec -recvtimeout 100 -machinefile ./mpihosts -np 1 ./pi $SIZE T >> $out
 	for NPROC in $NPROCS
 	do
-		mpiexec -recvtimeout 100 -machinefile ./mpihosts -np $NPROC ./pi $SIZE T >> $out
+#		mpiexec -recvtimeout 100 -machinefile ./mpihosts -np $NPROC ./pi $SIZE T >> $out
 		mpiexec -recvtimeout 100 -machinefile ./mpihosts -np $NPROC ./pi $SIZE F >> $out
 	done
 	echo $(date) $SIZE
