@@ -6,8 +6,6 @@ module add plgrid/tools/python
 module add plgrid/libs/python-numpy
 module add plgrid/tools/openmpi/1.6.5-gnu-4.9.2-ib
 
-pip install --user mpi4py
-
 NOW=$(date "+%F_%T")
 
 mkdir $NOW
@@ -16,7 +14,7 @@ cd $NOW
 
 chmod u+x ./pi.py
 
-mpiexec -np 5 ./pi.py 1000 >> rpi.csv
+mpiexec -np 1 ./pi.py 1000 >> rpi.csv
 #mpiexec -np 1 ./pi 10000 >> pi.txt
 #mpiexec -np 1 ./pi 100000 >> pi.txt
 #mpiexec -np 1 ./pi 100000 >> pi.txt

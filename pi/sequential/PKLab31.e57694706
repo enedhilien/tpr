@@ -1,0 +1,17 @@
+ 'tools/python/2.7.2-ucs4' load complete.
+ 'tools/openmpi/1.6.3-gnu-4.1.2-ib' load complete.
+ 'libs/boost/1.52.0' load complete.
+ 'compilers/gcc/4.7.2' load complete.
+ 'libs/openblas/0.2.6' load complete.
+ 'ruby/2.0.0-p247' load complete.
+cp: cannot stat `./pi.py': No such file or directory
+chmod: cannot access `./pi.py': No such file or directory
+--------------------------------------------------------------------------
+mpiexec was unable to launch the specified application as it could not access
+or execute an executable:
+
+Executable: ./pi.py
+Node: n1248-g7e.zeus
+
+while attempting to start process rank 0.
+--------------------------------------------------------------------------
