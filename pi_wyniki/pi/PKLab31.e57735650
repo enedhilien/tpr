@@ -1,0 +1,12 @@
+ 'tools/python/2.7.2-ucs4' load complete.
+ 'tools/openmpi/1.6.3-gnu-4.1.2-ib' load complete.
+ 'libs/boost/1.52.0' load complete.
+ 'compilers/gcc/4.7.2' load complete.
+ 'libs/openblas/0.2.6' load complete.
+ 'ruby/2.0.0-p247' load complete.
+=>> PBS: job killed: walltime 7219 exceeded limit 7200
+mpiexec: killing job...
+
+[n1254-g7e.zeus:22554] [[48332,0],0]-[[48332,1],4] mca_oob_tcp_msg_recv: readv failed: Connection reset by peer (104)
+[n1254-g7e.zeus:22554] [[48332,0],0]-[[48332,1],8] mca_oob_tcp_msg_recv: readv failed: Connection reset by peer (104)
+[n1254-g7e.zeus:22554] [[48332,0],0]-[[48332,1],10] mca_oob_tcp_msg_recv: readv failed: Connection reset by peer (104)
