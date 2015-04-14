@@ -15,14 +15,14 @@ mpicc -lm rpi.c -o rpi
 
 ITERATIONS="100000000 1000000000 10000000000"
 
-PROCS="1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24"
+PROCS="1 2 3 4 5 6 8 9 10 11 12 14 16 17 20 22 24"
 
 for ITER in $ITERATIONS
 do
         for PROC in $PROCS
         do
                 DIVIDED=$((ITER / PROC))
-                mpiexec -np $PROC ./rpi ${DIVIDED%%.*} >> rpi.txt		#nieskalowalne
-                #mpiexec -np $PROC ./rpi $ITER >> rpi.txt				#skalowalne
+                mpiexec -np $PROC ./rpi ${DIVIDED%%.*} $ITER >> rpi2.txt		#nieskalowalne
+                #mpiexec -np $PROC ./rpi $ITER $ITER >> rpi2_skal.txt				#skalowalne
         done
 done

@@ -17,6 +17,7 @@ int main (int argc, char *argv[]) {
         long double pi;
         long double result;
         long long iterations = atoll(argv[1]);
+        long long problem_size = atoll(argv[2]);
 
         MPI_Init (&argc, &argv);  /* starts MPI */
         MPI_Comm_rank (MPI_COMM_WORLD, &rank);  /* get current process id */
@@ -46,8 +47,8 @@ int main (int argc, char *argv[]) {
 
         if(rank == 0) {
                 //printf("%.16Lg\n", result/(long double)size);
-                //iterations, world size, pi, time,
-                printf("%lld; %d; %Lf; %f\n", iterations, size, pi, MPI_Wtime() - start);
+                //problem size, iterations/cpu, world size, pi, time,
+                printf("%lld; %lld; %d; %Lf; %f\n", problem_size, iterations, size, pi, MPI_Wtime() - start);
         }
 
         MPI_Finalize();

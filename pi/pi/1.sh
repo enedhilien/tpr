@@ -13,7 +13,7 @@ chmod +x ./rpi.c
 
 mpicc -lm rpi.c -o rpi
 
-ITERATIONS="10000 50000 100000 500000 1000000 5000000 10000000 50000000 100000000 500000000 1000000000 5000000000 10000000000"
+ITERATIONS="10000 100000 1000000 10000000 100000000 1000000000 10000000000"
 
 PROCS="1 2 4 8 12 20 24"
 
@@ -22,7 +22,7 @@ do
         for ITER in $ITERATIONS
         do
                 DIVIDED=$((ITER / PROC))
-                mpiexec -np $PROC ./rpi ${DIVIDED%%.*} >> rpi.txt		#nieskalowalne
-				#mpiexec -np $PROC ./rpi $ITER >> rpi.txt				#skalowalne
+                mpiexec -np $PROC ./rpi ${DIVIDED%%.*} $ITER >> rpi1.txt		#nieskalowalne
+				#mpiexec -np $PROC ./rpi $ITER $ITER >> rpi1_skal.txt				#skalowalne
         done
 done
