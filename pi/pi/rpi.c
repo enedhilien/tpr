@@ -21,14 +21,15 @@ int main (int argc, char *argv[]) {
         MPI_Init (&argc, &argv);  /* starts MPI */
         MPI_Comm_rank (MPI_COMM_WORLD, &rank);  /* get current process id */
         MPI_Comm_size (MPI_COMM_WORLD, &size);  /* get current process id */
-        MPI_Barrier(MPI_COMM_WORLD);
-        double start = MPI_Wtime();
+		double start = MPI_Wtime();
 
         int randomData = open("/dev/urandom", O_RDONLY);
         int seed;
 		ssize_t read_size = read(randomData, &seed, sizeof(int));
 		srand(seed);
         close(randomData);
+        MPI_Barrier(MPI_COMM_WORLD);
+
         long long counter = 0;
         for(i = 0; i < iterations; i++) {
                 x = (((long double)rand()) / ((long double)RAND_MAX));
