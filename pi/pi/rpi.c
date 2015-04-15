@@ -20,7 +20,7 @@ int main (int argc, char *argv[]) {
         long long problem_size = atoll(argv[2]);
 
         MPI_Init (&argc, &argv);  /* starts MPI */
-        MPI_Comm_rank (MPI_COMM_WORLD, &rank);  /* get current process id */
+        MPI_Comm_rank (MPI_COMM_WORLD, &rank);  /* get rcurrent process id */
         MPI_Comm_size (MPI_COMM_WORLD, &size);  /* get current process id */
 		double start = MPI_Wtime();
 
