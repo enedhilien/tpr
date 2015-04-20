@@ -1,0 +1,24 @@
+ 'tools/python/2.7.2-ucs4' load complete.
+ 'tools/openmpi/1.6.3-gnu-4.1.2-ib' load complete.
+ 'libs/boost/1.52.0' load complete.
+ 'compilers/gcc/4.7.2' load complete.
+ 'libs/openblas/0.2.6' load complete.
+ 'ruby/2.0.0-p247' load complete.
+ 'compilers/gcc/4.8.2' load complete.
+ 'tools/openmpi/1.6.5-gnu-4.8.2-ib' load complete.
+ apps/java/1.7.0_51 load complete.
+ 'compilers/llvm/3.3' load complete.
+ 'plgrid/tools/python/2.7.5' load complete.
+tools/python/2.7.2-el5(37):ERROR:150: Module 'tools/python/2.7.2-el5' conflicts with the currently loaded module(s) 'tools/python/2.7.2-ucs4'
+tools/python/2.7.2-el5(37):ERROR:102: Tcl command execution failed: conflict tools/python
+
+ 'libs/mkl/10.3' load complete.
+plgrid/libs/python-numpy/1.6.2-mkl-gnu95(52):ERROR:151: Module 'plgrid/libs/python-numpy/1.6.2-mkl-gnu95' depends on one of the module(s) 'tools/python/2.7.2-el5'
+plgrid/libs/python-numpy/1.6.2-mkl-gnu95(52):ERROR:102: Tcl command execution failed: prereq tools/python/2.7.2-el5
+
+ 'compilers/gcc/4.9.2' load complete.
+ 'plgrid/tools/openmpi/1.6.5-gnu-4.9.2-ib' load complete.
+--------------------------------------------------------------------------
+mpiexec noticed that the job aborted, but has no info as to the process
+that caused that situation.
+--------------------------------------------------------------------------
