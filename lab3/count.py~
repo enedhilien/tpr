@@ -53,7 +53,7 @@ for line in lines:
 
 for (size, rows) in by_size.iteritems():
     with open(out_dir + '/counted_%s.csv'%size, 'w') as csvfile:
-        fieldnames = headers + ['speedup', 'efficiency', 'karp_flatt', 'speedup_scal', 'efficiency_scal', 'karp_flatt_scal']
+        fieldnames = headers + ['speedup', 'efficiency', 'karp_flatt']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames, delimiter=',', lineterminator='\n')
         writer.writeheader()
         writer.writerows(rows)

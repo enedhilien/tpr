@@ -1,0 +1,2 @@
+problem_size,size_per_proc,procs,time,pi,speedup,efficiency,karp_flatt,speedup_scal,efficiency_scal,karp_flatt_scal
+1,1,1,2e-06,4.0,1.0,1.0,,1.0,1.0,
