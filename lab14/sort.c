@@ -17,7 +17,7 @@ int main(int argc, char *argv[]){
   int problem_size, threads;
   int* to_sort ;
   if (argc < 3){
-    printf("usage: %s <problem_size> <threads>", argv[0]);
+    printf("usage: %s <problem_size> <threads>\n", argv[0]);
     exit(1);
   }
   problem_size = atoi(argv[1]);
@@ -41,7 +41,7 @@ int main(int argc, char *argv[]){
   clock_gettime(CLOCK_REALTIME, &requestEnd);  
   double accum = ( requestEnd.tv_sec - requestStart.tv_sec )  + ( requestEnd.tv_nsec - requestStart.tv_nsec )  / BILLION;
 
-  printf("%d;%lf", real_threads, accum);
+  printf("%d;%lf\n", real_threads, accum);
 }
 
 int omp_lsd_radix_sort(size_t n, unsigned data[n]) {
