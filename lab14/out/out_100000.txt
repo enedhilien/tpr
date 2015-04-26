@@ -1,4 +1,4 @@
-threads;problem_size
+threads;time
 1;0.007925
 2;0.005187
 3;0.003670

@@ -13,7 +13,7 @@ mkdir -p ./out
 for SIZE in $SIZES
 do	
 	touch ./out/out_$SIZE.txt
-	echo "threads;problem_size" > ./out/out_$SIZE.txt
+	echo "threads;time" > ./out/out_$SIZE.txt
 
 	for NPROC in $NPROCS
 	do
