@@ -6,7 +6,7 @@ module add plgrid/tools/openmpi/1.6.5-gnu-4.9.2-ib
 NOW=$(date "+%F_%T")
 
 mkdir $NOW
-cp tpr/lab1/python ./$NOW
+cp tpr/lab1/python/zad1.py ./$NOW
 cd $NOW
 
 chmod u+x ./zad1.py
