@@ -61,7 +61,7 @@ elif rank == 1:
 	status = MPI.Status()
 	data = comm.recv(source=0)
 	#~ print str(size)+';'+str(data)+';'+str(timer. micro_time(times))
-	print u"{0:d};{1:d};{2:f};{3:f};".format(size, times, data, timer.micro_time(times))
+	print u"{0:d};{1:d};{2:.16f};{3:.16f};".format(size, times, data, timer.micro_time(times))
 else :
 	print "Expected 2 nodes "
 
