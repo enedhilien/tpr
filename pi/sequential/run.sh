@@ -1,10 +1,10 @@
 #!/bin/bash
-module load libs/boost/1.52.0
-module load libs/openblas/0.2.6
-module load ruby/2.0.0-p247
-module add plgrid/tools/python
-module add plgrid/libs/python-numpy
-module add plgrid/tools/openmpi/1.6.5-gnu-4.9.2-ib
+#module load libs/boost/1.52.0
+#module load libs/openblas/0.2.6
+#module load ruby/2.0.0-p247
+module load plgrid/tools/python
+module load plgrid/libs/python-numpy
+module load plgrid/tools/openmpi/1.6.5-gnu-4.9.2-ib
 
 NOW=$(date "+%F_%T")
 
