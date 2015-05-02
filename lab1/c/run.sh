@@ -1,7 +1,7 @@
 #!/bin/bash
-module add plgrid/tools/python
-module add plgrid/libs/python-numpy
-module add plgrid/tools/openmpi/1.6.5-gnu-4.9.2-ib
+module load libs/boost/1.52.0
+module load libs/openblas/0.2.6
+module load ruby/2.0.0-p247
 
 NOW=$(date "+%F_%T")
 
