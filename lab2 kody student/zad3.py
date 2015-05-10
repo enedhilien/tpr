@@ -26,7 +26,7 @@ def main(argv):
 		std_scatter(count, msg_size, results)
 	
 	if(rank == 0):
-		print_results(results, method)
+		print_results(results, method, count)
 	MPI.Finalize()
 
 def usage():
@@ -69,9 +69,9 @@ def user_reduce_scatter(data, recv_buf,root = 0):
 		comm.recv(source=0)
 
 
-def print_results(results, method):
+def print_results(results, method, count):
 	for i in results:	
-		print '{0};{1};{2};{3}'.format(method, size, i, results[i][method])
+		print '{0};{1};{2};{3}'.format(method, size, i, count, results[i][method])
 	
 if __name__ == "__main__":
 	main(sys.argv[1:])
