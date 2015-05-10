@@ -2,87 +2,79 @@
 from mpi4py import MPI
 import numpy
 import sys
+import copy
+
 comm = MPI.COMM_WORLD
 rank = comm.Get_rank()
 size = comm.Get_size()
-########################################
-#		   	mapy danych	               #
-########################################
 
-def my_Reduce_scatter(sendbuf, recvbuf, recvcounts):
-	currentIndex = 0
-	for i in range(0,len(recvcounts)):
-		if i == rank:
-			#TO JEST ZE DO RECV BUF PRZEPISUJEMY SAMEGO SIEBIE
-			dupa = sendbuf[currentIndex:currentIndex+recvcounts[i]]	
-			for p in range(0, size):
-				if rank != p:
-					recvbuf = comm.recv(source=p)
-					#print rank, "odbieram", odebrane
-					for k in range(0, recvcounts[i]):
-						dupa[k] += recvbuf[k]
-			recvbuf = dupa
-			#print recvbuf
-		else:
-			comm.send(sendbuf[currentIndex:currentIndex+recvcounts[i]], dest=i)
-			#print rank, "wysylam"
-		currentIndex += recvcounts[i]
+def main(argv):
+	if (len(argv) != 5):
+		usage()
+		return -1;
+	
+	method = argv[0]
+	count = int(argv[1])
+	start_size = int(argv[2])
+	end_size = int(argv[3])
+	step = int(argv[4])
+	
+	steps = range(start_size, end_size, step)
+	results = {}
+	for step in steps:
+		results[step] = {}
+	
+	user_scatter(count, steps, results)
+	std_scatter(count, steps, results)
+	if(rank == 0):
+		print_results(results)
+
+def usage():
+	print "Usage: zad2.py <usr|std> <count> <start_message_size> <end_message_size> <message_size_step>"
+	
+def std_scatter(count, steps, results):
+	for msg_size in steps:
+		data = numpy.arange(msg_size-1, dtype='b')
+		chunk_size = len(data)/size
+		send_buf = numpy.array_split(data, size)
 		
-########################################
-#		   	mapy danych	               #
-########################################
+		before = MPI.Wtime()
+		for _ in xrange(0, count):
+			comm.scatter(send_buf, root=0)
+		after = MPI.Wtime()
+		
+		results[msg_size]['std'] = (after - before)/count
+	
 
-result_reduce_scatter_times = {}
-result_my_reduce_scatter_times = {}
+def user_scatter(count, steps, results):
+	for msg_size in steps:
+		data = numpy.arange(msg_size-1, dtype='b')
+		chunk_size = len(data)/size
+		send_buf = numpy.array_split(data, size)
+		recv_buf = numpy.empty(chunk_size, dtype='b')
+		before = MPI.Wtime()
+		for _ in xrange(0, count):
+			user_reduce_scatter(data, root=0, recv_buf=recv_buf)
+		after = MPI.Wtime()
+		
+		results[msg_size]['user'] = (after - before)/count
 
-########################################
-#		   	zakres danych              #
-########################################
 
-count = 20
-min_bytes = 2400/4
-max_bytes = min_bytes * 10 + 1
-step = min_bytes
+def user_reduce_scatter(data, recv_buf,root = 0):
+	if rank == root:
+		for i in xrange(0,size):
+			if(i != root):
+				comm.send(data[i], dest=i)
+			else:
+				recv_buf = copy.deepcopy(data[i])
+	else:
+		comm.recv(source=0)
 
 
-########################################
-#		   	standardowa	               #
-########################################
-
-for msg_size in range(min_bytes,max_bytes,step):		 
-	send_buf = numpy.arange(msg_size, dtype='i')
-	recv_buf = numpy.arange(msg_size/size, dtype='i')
-	recv_counts = [msg_size/size for i in range(size)]
-	before = MPI.Wtime()
-	for _ in range(0,count):
-		comm.Reduce_scatter(send_buf, recv_buf, recv_counts, MPI.SUM)
-	after = MPI.Wtime()
-	time = after - before
-	result = time/count
-	result_reduce_scatter_times[msg_size] = result
-
-########################################
-#		  	 	wlasna		           #
-########################################
-
-for msg_size in range(min_bytes,max_bytes,step):		 
-	send_buf = numpy.arange(msg_size, dtype='i')
-	recv_buf = numpy.arange(msg_size/size, dtype='i')
-	recv_counts = [msg_size/size for i in range(size)]
-	before = MPI.Wtime()
-	for _ in range(0,count):
-		my_Reduce_scatter(send_buf, recv_buf, recv_counts)
-	after = MPI.Wtime()
-	time = after - before
-	result = time/count
-	result_my_reduce_scatter_times[msg_size] = result
-
-########################################
-#		   	wypisanie danych           #
-########################################
-
-if rank == 0:
-	print '\nrozmiar\treduce_scatter\tmy_reduce_scatter'
-	for i in range(min_bytes,max_bytes,step):	
-		print '{0}\t{1}\t{2}'.format(i, result_reduce_scatter_times[i], result_my_reduce_scatter_times[i])
+def print_results(results):
+	for i in results:	
+		print '{0};{1};{2}'.format(i, results[i]['user'], results[i]['std'])
+	
+if __name__ == "__main__":
+	main(sys.argv[1:])
 		
