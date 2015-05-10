@@ -71,7 +71,7 @@ def user_reduce_scatter(data, recv_buf,root = 0):
 
 def print_results(results, method, count):
 	for i in results:	
-		print '{0};{1};{2};{3};{4}'.format(method, size, i, count, results[i][method])
+		print '{0};{1};{2};{3}'.format(method, size, i, count, results[i][method])
 	
 if __name__ == "__main__":
 	main(sys.argv[1:])

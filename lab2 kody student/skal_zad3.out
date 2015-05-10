@@ -7,3 +7,15 @@ user;4;1000;0.000112104892731
 [mpiexec@ubuntu] Sending Ctrl-C to processes as requested
 [mpiexec@ubuntu] Press Ctrl-C again to force abort
 user;8;1000;0.000314263343811
+user;1;25;10
+user;1;50;10
+user;1;75;10
+user;1;25;100
+user;1;50;100
+user;1;75;100
+user;2;25;10
+user;2;50;10
+user;2;75;10
+user;2;25;100
+user;2;50;100
+user;2;75;100
