@@ -9,55 +9,53 @@ rank = comm.Get_rank()
 size = comm.Get_size()
 
 def main(argv):
-	if (len(argv) != 5):
+	if (len(argv) != 3):
 		usage()
 		return -1;
 	
 	method = argv[0]
 	count = int(argv[1])
-	start_size = int(argv[2])
-	end_size = int(argv[3])
-	step = int(argv[4])
-	
-	steps = range(start_size, end_size, step)
+	msg_size = int(argv[2])
+
 	results = {}
-	for step in steps:
-		results[step] = {}
+	results[msg_size] = {}
 	
-	user_scatter(count, steps, results)
-	std_scatter(count, steps, results)
+	if method == 'user':
+		user_scatter(count, msg_size, results)
+	elif method == 'std':
+		std_scatter(count, msg_size, results)
+	
 	if(rank == 0):
-		print_results(results)
+		print_results(results, method)
+	MPI.Finalize()
 
 def usage():
-	print "Usage: zad2.py <usr|std> <count> <start_message_size> <end_message_size> <message_size_step>"
+	print "Usage: zad3.py <user|std> <count> <message_size>"
 	
-def std_scatter(count, steps, results):
-	for msg_size in steps:
-		data = numpy.arange(msg_size-1, dtype='b')
-		chunk_size = len(data)/size
-		send_buf = numpy.array_split(data, size)
-		
-		before = MPI.Wtime()
-		for _ in xrange(0, count):
-			comm.scatter(send_buf, root=0)
-		after = MPI.Wtime()
-		
-		results[msg_size]['std'] = (after - before)/count
+def std_scatter(count, msg_size, results):
+	data = numpy.arange(msg_size-1, dtype='b')
+	chunk_size = len(data)/size
+	send_buf = numpy.array_split(data, size)
+	
+	before = MPI.Wtime()
+	for _ in xrange(0, count):
+		comm.scatter(send_buf, root=0)
+	after = MPI.Wtime()
+	
+	results[msg_size]['std'] = (after - before)/count
 	
 
-def user_scatter(count, steps, results):
-	for msg_size in steps:
-		data = numpy.arange(msg_size-1, dtype='b')
-		chunk_size = len(data)/size
-		send_buf = numpy.array_split(data, size)
-		recv_buf = numpy.empty(chunk_size, dtype='b')
-		before = MPI.Wtime()
-		for _ in xrange(0, count):
-			user_reduce_scatter(data, root=0, recv_buf=recv_buf)
-		after = MPI.Wtime()
-		
-		results[msg_size]['user'] = (after - before)/count
+def user_scatter(count, msg_size, results):
+	data = numpy.arange(msg_size-1, dtype='b')
+	chunk_size = len(data)/size
+	send_buf = numpy.array_split(data, size)
+	recv_buf = numpy.empty(chunk_size, dtype='b')
+	before = MPI.Wtime()
+	for _ in xrange(0, count):
+		user_reduce_scatter(data, root=0, recv_buf=recv_buf)
+	after = MPI.Wtime()
+	
+	results[msg_size]['user'] = (after - before)/count
 
 
 def user_reduce_scatter(data, recv_buf,root = 0):
@@ -71,9 +69,9 @@ def user_reduce_scatter(data, recv_buf,root = 0):
 		comm.recv(source=0)
 
 
-def print_results(results):
+def print_results(results, method):
 	for i in results:	
-		print '{0};{1};{2}'.format(i, results[i]['user'], results[i]['std'])
+		print '{0};{1};{2};{3}'.format(method, size, i, results[i][method])
 	
 if __name__ == "__main__":
 	main(sys.argv[1:])
