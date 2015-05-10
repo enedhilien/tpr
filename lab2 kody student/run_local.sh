@@ -19,18 +19,20 @@ chmod u+x ./$PROGRAM
 ITERATIONS="10000 100000 1000000 10000000 100000000 1000000000 10000000000"
 PROCS="1 2 4 8 12 20 24"
 
-
-ITERATIONS="100 1000"
-PROCS="1 2 4 8"
-
-
+ITERATIONS="10 100"
+SIZES="25 50 75"
+PROCS="1 2"
 
 for PROC in $PROCS
 do
         for ITER in $ITERATIONS
         do
-                DIVIDED=$((ITER / PROC))
-                mpiexec -np $PROC ./$PROGRAM $METHOD ${DIVIDED%%.*} $ITER >> $FILENAME.out		#nieskalowalne
-                mpiexec -np $PROC ./$PROGRAM $METHOD $ITER $ITER >> skal_$FILENAME.out		#skalowalne
+                for SIZE in $SIZES
+                do
+                        DIVIDED=$((ITER / PROC))
+                        mpiexec -np $PROC ./$PROGRAM $METHOD ${DIVIDED%%.*} $SIZE >> $FILENAME.out              #nieskalowalne
+                        mpiexec -np $PROC ./$PROGRAM $METHOD $ITER $SIZE >> skal_$FILENAME.out          #skalowalne
+                done
         done
 done
+
