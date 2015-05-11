@@ -1,0 +1,15 @@
+ 'compilers/gcc/4.8.2' load complete.
+ 'tools/openmpi/1.6.5-gnu-4.8.2-ib' load complete.
+ apps/java/1.7.0_51 load complete.
+ 'compilers/llvm/3.3' load complete.
+ 'plgrid/tools/python/2.7.5' load complete.
+ 'tools/python/2.7.2-el5' load complete.
+ 'libs/mkl/10.3' load complete.
+ 'plgrid/libs/python-numpy/1.6.2-mkl-gnu95' load complete.
+ 'compilers/gcc/4.9.2' load complete.
+ 'plgrid/tools/openmpi/1.6.5-gnu-4.9.2-ib' load complete.
+=>> PBS: job killed: walltime 18009 exceeded limit 18000
+mpiexec: abort is already in progress...hit ctrl-c again to forcibly terminate
+
+mpiexec: killing job...
+
