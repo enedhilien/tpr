@@ -15,14 +15,17 @@ void add_with_cpu(int *a, int *b, int *c, int N){
 	}
 }
 
-float count ( int , int, int * );
+float count ( int , int, int * , int, int);
 
 int main( int argc, char **argv )  {
-	if (argc < 2){
-		printf("usage: %s <vector_size>", argv[0]);
+	if (argc < 333){
+		printf("usage: %s <vector_size> <blocksize>", argv[0]);
 		exit(-1);
 	}
 	int N = atoi(argv[1]);
+	int blocksize = atoi(argv[2]);
+	int nblocks = (N - 1) / blocksize + 1;
+
 	/*if (!strcmp(argv[2], "gpu"))
 		use_gpu = 1;
 	else if (strcmp(argv[2], "cpu")){
@@ -32,14 +35,26 @@ int main( int argc, char **argv )  {
         int *c = (int *) malloc(N * sizeof(int));
         int *ccpu = (int *) malloc(N * sizeof(int));
 
-	float time = count(N, 1, c);
-	printf ("Time for the gpu: %f ms\n", time);
+	printf("%d; %d; %d; ", N, nblocks, blocksize);
 
-	time = count(N, 1, ccpu);
-	printf ("Time for the cpu: %f ms\n", time);
+	float time = count(N, 1, c, 0, 0);
+	printf ("%f; ", time);
+
+	time = count(N, 0, ccpu, nblocks, blocksize);
+	printf ("%f; ", time);
+	
+	int i;
+	for (i=0; i< N; i++){
+		if (ccpu[i] != c[i]){
+			break;
+		}
+		
+	}
+	printf("%d", N - i);
+	
 
 }
-float count ( int N, int use_gpu, int * c){
+float count ( int N, int use_gpu, int * c, int nblocks, int blocksize){
 
 
 	int *a = (int *) malloc(N * sizeof(int));
@@ -66,6 +81,7 @@ float count ( int N, int use_gpu, int * c){
 	sdkResetTimer(&timer);
 	sdkStartTimer(&timer);
 	
+
 	if (use_gpu)
 		add <<<1,N>>> (dev_a,dev_b,dev_c, N);
 	else 
