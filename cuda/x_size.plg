@@ -1,0 +1,25 @@
+set key autotitle columnhead
+set datafile separator ';'
+
+set label "Time of execution
+#set terminal png size 1400,1300 
+#set output 'plot.png'
+set terminal wxt size 1366,748
+set autoscale
+
+set xlabel "size"
+set ylabel "time [ms]"
+#set y2label "nblocks"
+#set y2tics
+
+plot "x_size_II/stats_1024.csv" using 1:4 title 'time with block-size 1024' with lines axes x1y1, \
+        "x_size_II/stats_768.csv" using 1:4 title 'time with block-size 768' with lines axes x1y1, \
+        "x_size_II/stats_512.csv" using 1:4 title 'time with block-size 512' with lines axes x1y1, \
+        "x_size_II/stats_256.csv" using 1:4 title 'time with block-size 256' with lines axes x1y1, \
+        "x_size_II/stats_128.csv" using 1:4 title 'time with block-size 128' with lines axes x1y1, \
+        "x_size_II/stats_64.csv" using 1:4 title 'time with block-size 64' with lines axes x1y1, \
+        "x_size_II/stats_16.csv" using 1:4 title 'time with block-size 16' with lines axes x1y1, \
+        "x_size_II/stats_1.csv" using 1:4 title 'time with block-size 1' with lines axes x1y1, \
+        "x_size_II/stats_8.csv" using 1:4 title 'time with block-size 8' with lines axes x1y1
+
+pause -1

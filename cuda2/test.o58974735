@@ -1,0 +1,3 @@
+size; width; height; block_size; tries; time
+324; 18; 18; 16; 100; 0.010160
+256; 16; 16; 16; 100; 0.008550

@@ -1,0 +1,20 @@
+set key autotitle columnhead
+set datafile separator ';'
+
+set label "Time of execution
+#set terminal png size 1400,1300 
+#set output 'plot.png'
+set terminal wxt size 1366,658
+set autoscale
+
+set xlabel "blocksize"
+set ylabel "errors"
+
+plot "x_block_size/stats_500.csv" using 3:6 title 'size: 5*10^2 - errors' with lines axes x1y1, \
+        "x_block_size/stats_5000.csv" using 3:6 title 'size: 5*10^3 - errors' with lines axes x1y1, \
+        "x_block_size/stats_50000.csv" using 3:6 title 'size: 5*10^4 - errors' with lines axes x1y2, \
+        "x_block_size/stats_200000.csv" using 3:6 title 'size: 2*10^5 - errors' with lines axes x1y1, \
+        "x_block_size/stats_524288.csv" using 3:6 title 'size: 524288 - errors' with lines axes x1y1, \
+        "x_block_size/stats_600000.csv" using 3:6 title 'size: 6*10^5 - errors' with lines axes x1y2
+
+pause -1
