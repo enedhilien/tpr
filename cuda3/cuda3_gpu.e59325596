@@ -1,0 +1,6 @@
+mount: could not find any free loop device
+ 'gpu/cuda/5.5.22' load complete.
+/var/torque/mom_priv/cyfronet/setup_mem_cgroup: line 45: echo: write error: No such process
+/var/torque/mom_priv/cyfronet/setup_mem_cgroup: line 45: echo: write error: No such process
+=>> PBS: job killed: walltime 3643 exceeded limit 3600
+umount: /scratch/59325596.batch.grid.cyf-kr.edu.pl: not mounted

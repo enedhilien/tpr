@@ -18,12 +18,13 @@ void add_with_cpu(int *a, int *b, int *c, int N){
 float count ( int , int, int * , int, int);
 
 int main( int argc, char **argv )  {
-	if (argc < 333){
-		printf("usage: %s <vector_size> <blocksize>", argv[0]);
+	if (argc < 4){
+		printf("usage: %s <vector_size> <blocksize> <tries>\n", argv[0]);
 		exit(-1);
 	}
 	int N = atoi(argv[1]);
 	int blocksize = atoi(argv[2]);
+	int tries = atoi(argv[3]);
 	int nblocks = (N - 1) / blocksize + 1;
 
 	/*if (!strcmp(argv[2], "gpu"))
@@ -37,7 +38,12 @@ int main( int argc, char **argv )  {
 
 	printf("%d; %d; %d; ", N, nblocks, blocksize);
 
-	float time = count(N, 1, c, 0, 0);
+	float time = 0;
+	for (int trie = 0; trie< tries; trie++){
+		time += count(N, 1, c, nblocks, blocksize);
+	}
+	time = time / tries;
+
 	printf ("%f; ", time);
 
 	time = count(N, 0, ccpu, nblocks, blocksize);
@@ -50,7 +56,7 @@ int main( int argc, char **argv )  {
 		}
 		
 	}
-	printf("%d", N - i);
+	printf("%d\n", N - i);
 	
 
 }
@@ -83,7 +89,7 @@ float count ( int N, int use_gpu, int * c, int nblocks, int blocksize){
 	
 
 	if (use_gpu)
-		add <<<1,N>>> (dev_a,dev_b,dev_c, N);
+		add <<<nblocks,blocksize>>> (dev_a,dev_b,dev_c, N);
 	else 
 		add_with_cpu (a, b, c, N);
 
@@ -96,10 +102,10 @@ float count ( int N, int use_gpu, int * c, int nblocks, int blocksize){
 	if(use_gpu)
 		cudaMemcpy(c, dev_c, N*sizeof(int), cudaMemcpyDeviceToHost);
 	
-	for (int i = 0; i < N; i++) {
+/*	for (int i = 0; i < N; i++) {
 		printf("%d+%d=%d\n", a[i], b[i], c[i]);
 	}
-
+*/
 	if (use_gpu){
 		cudaFree(dev_a);
 		cudaFree(dev_b);
