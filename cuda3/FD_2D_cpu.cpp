@@ -33,9 +33,13 @@ void update(float *u, float *u_prev, int N, float h, float dt, float alpha, int 
     // as we don't touch boundaries
 }
 
-int main() {
+int main(int argc, char *const argv[]) {
     // Allocate in CPU
-    int N = 128;
+    if (argc < 2) {
+        printf("usage: %s <net_size>\n", argv[0]);
+        exit(0);
+    }
+    int N = atoi(argv[1]);
     int BLOCKSIZE = 16;
 
     float xmin = 0.0f;
@@ -79,8 +83,7 @@ int main() {
     double stop = get_time();
 
     double elapsed = stop - start;
-    std::cout << "time = " << elapsed <<
-    std::endl;
+    std::cout << elapsed;
     std::ofstream temperature("temperature_cpu.txt");
     for (int j = 0; j < N; j++) {
         for (int i = 0; i < N; i++) {

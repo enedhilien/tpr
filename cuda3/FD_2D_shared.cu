@@ -5,21 +5,25 @@
 
 #define BSZ (16)
 
-void checkErrors(char *label) {
+int checkErrors(char *label, int N) {
 // we need to synchronise first to catch errors due to
 // asynchroneous operations that would otherwise
 // potentially go unnoticed
+    int errorOccured = 0;
     cudaError_t err;
     err = cudaThreadSynchronize();
     if (err != cudaSuccess) {
         char *e = (char *) cudaGetErrorString(err);
-        fprintf(stderr, "CUDA Error: %s (at %s)\n", e, label);
+        fprintf(stderr, "CUDA Error: %s (at %s%d)\n", e, label, N);
+        errorOccured = 1;
     }
     err = cudaGetLastError();
     if (err != cudaSuccess) {
         char *e = (char *) cudaGetErrorString(err);
-        fprintf(stderr, "CUDA Error: %s (at %s)\n", e, label);
+        fprintf(stderr, "CUDA Error: %s (at %s%d)\n", e, label, N);
+        errorOccured = 1;
     }
+    return errorOccured;
 }
 
 double get_time() {
@@ -73,9 +77,13 @@ __global__ void update(float *u, float *u_prev, int N, float h, float dt, float 
     // as we don't touch boundaries
 }
 
-int main() {
+int main(int argc, char *const argv[]) {
     // Allocate in CPU
-    int N = 128;
+    if (argc < 2) {
+        printf("usage: %s <net_size>\n", argv[0]);
+        exit(0);
+    }
+    int N = atoi(argv[1]);
     int BLOCKSIZE = BSZ;
 
     cudaSetDevice(2);
@@ -129,9 +137,14 @@ int main() {
     }
     double stop = get_time();
 
-    checkErrors("update");
+    int errorOccured = checkErrors("update with N=", N);
+
     double elapsed = stop - start;
-    std::cout << "time = " << elapsed << std::endl;
+
+    if (errorOccured)
+        std::cout << -1;
+    else
+        std::cout << elapsed;
 
     // Copy result back to host
     cudaMemcpy(u, u_d, N * N * sizeof(float), cudaMemcpyDeviceToHost);

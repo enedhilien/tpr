@@ -4,21 +4,25 @@
 #include <cmath>
 #include <sys/time.h>
 
-void checkErrors(char *label) {
+int checkErrors(char *label, int N) {
 // we need to synchronise first to catch errors due to
 // asynchroneous operations that would otherwise
 // potentially go unnoticed
+    int errorOccured = 0;
     cudaError_t err;
     err = cudaThreadSynchronize();
     if (err != cudaSuccess) {
         char *e = (char *) cudaGetErrorString(err);
-        fprintf(stderr, "CUDA Error: %s (at %s)\n", e, label);
+        fprintf(stderr, "CUDA Error: %s (at %s%d)\n", e, label, N);
+        errorOccured = 1;
     }
     err = cudaGetLastError();
     if (err != cudaSuccess) {
         char *e = (char *) cudaGetErrorString(err);
-        fprintf(stderr, "CUDA Error: %s (at %s)\n", e, label);
+        fprintf(stderr, "CUDA Error: %s (at %s%d)\n", e, label, N);
+        errorOccured = 1;
     }
+    return errorOccured;
 }
 
 double get_time() {
@@ -76,10 +80,18 @@ __global__ void update(float *u, float *u_prev, int N, float h, float dt, float 
     }
 }
 
-int main() {
+int main(int argc, char *const argv[]) {
     // Allocate in CPU
-    int N = 128;        // For textures to work, N needs to be a multiple of
-    int BLOCKSIZE = 16;    // 32. As I will be using BLOCKSIZE to be a multiple of 8
+    if (argc < 2) {
+        printf("usage: %s <net_size>\n", argv[0]);
+        exit(0);
+    }
+    int N = atoi(argv[1]);
+    if (N % 32 != 0){
+        printf("For textures to work, N needs to be a multiple of 32");
+        exit(0);
+    }
+    int BLOCKSIZE = 16;    // As I will be using BLOCKSIZE to be a multiple of 8
     // I'll just look for the closest multiple of BLOCKSIZE (N_max)
 
     int N_max = (int((N - 0.5) / BLOCKSIZE) + 1) * BLOCKSIZE;
@@ -145,11 +157,15 @@ int main() {
 
     }
     double stop = get_time();
-    checkErrors("update");
+
+    int errorOccured = checkErrors("update with N=", N);
 
     double elapsed = stop - start;
 
-    std::cout << "time = " << elapsed << std::endl;
+    if (errorOccured)
+        std::cout << -1;
+    else
+        std::cout << elapsed;
 
     // Copy result back to host
     cudaMemcpy(u, u_d, N_max * N_max * sizeof(float), cudaMemcpyDeviceToHost);

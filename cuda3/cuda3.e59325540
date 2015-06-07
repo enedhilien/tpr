@@ -1,0 +1,19 @@
+ 'gpu/cuda/5.5.22' load complete.
+CUDA Error: all CUDA-capable devices are busy or unavailable (at update with N=2048)
+CUDA Error: all CUDA-capable devices are busy or unavailable (at update with N=2048)
+CUDA Error: all CUDA-capable devices are busy or unavailable (at update with N=2048)
+CUDA Error: all CUDA-capable devices are busy or unavailable (at update with N=2048)
+CUDA Error: all CUDA-capable devices are busy or unavailable (at update with N=2560)
+CUDA Error: all CUDA-capable devices are busy or unavailable (at update with N=2560)
+CUDA Error: all CUDA-capable devices are busy or unavailable (at update with N=2560)
+CUDA Error: all CUDA-capable devices are busy or unavailable (at update with N=2560)
+=>> PBS: job killed: walltime 3646 exceeded limit 3600
+ 'gpu/cuda/5.5.22' load complete.
+CUDA Error: all CUDA-capable devices are busy or unavailable (at update with N=7168)
+CUDA Error: all CUDA-capable devices are busy or unavailable (at update with N=7168)
+CUDA Error: unspecified launch failure (at update with N=7168)
+CUDA Error: unspecified launch failure (at update with N=7168)
+CUDA Error: all CUDA-capable devices are busy or unavailable (at update with N=8192)
+CUDA Error: all CUDA-capable devices are busy or unavailable (at update with N=8192)
+CUDA Error: all CUDA-capable devices are busy or unavailable (at update with N=8192)
+CUDA Error: all CUDA-capable devices are busy or unavailable (at update with N=8192)
