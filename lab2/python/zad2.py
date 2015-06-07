@@ -71,5 +71,5 @@ for i in range(min_bytes,max_bytes,step):
 if rank == 0:
 	print '\nrozmiar\tbcast\tmy_bcast'
 	for i in range(min_bytes,max_bytes,step):	
-		print '{0}\t{1}\t{2}'.format(i, result_bcast_times[i], result_mybcast_times[i])
+		print '{0};{1};{2}'.format(i, result_bcast_times[i], result_mybcast_times[i])
 		

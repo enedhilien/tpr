@@ -1,0 +1,22 @@
+set key autotitle columnhead
+set datafile separator ';'
+
+set label "Time of execution
+#set terminal png size 1400,1300 
+#set output 'plot.png'
+set terminal wxt size 1366,708
+set autoscale
+
+set xlabel "blocksize"
+set ylabel "time [ms]"
+set y2label "errors"
+set y2tics
+
+plot "x_block_size/stats_100.csv" using 3:4 title 'size: 100 - gpu' with lines axes x1y1, \
+        "x_block_size/stats_100.csv" using 3:5 title 'size: 100 - cpu' with lines axes x1y1, \
+        "x_block_size/stats_100.csv" using 3:6 title 'size: 100 - errors' with lines axes x1y2, \
+        "x_block_size/stats_300.csv" using 3:4 title 'size: 300 - gpu' with lines axes x1y1, \
+        "x_block_size/stats_300.csv" using 3:5 title 'size: 300 - cpu' with lines axes x1y1, \
+        "x_block_size/stats_300.csv" using 3:6 title 'size: 300 - errors' with lines axes x1y2
+
+pause -1

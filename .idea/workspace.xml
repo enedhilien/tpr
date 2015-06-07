@@ -1,0 +1,811 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" assignedExecutableTargets="true" buildAllGenerated="false">
+    <generated />
+  </component>
+  <component name="CMakeSettings" AUTO_RELOAD="false" GENERATION_PASS_SYSTEM_ENVIRONMENT="true">
+    <ADDITIONAL_GENERATION_ENVIRONMENT>
+      <envs />
+    </ADDITIONAL_GENERATION_ENVIRONMENT>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="75309ed0-4fa6-4635-9f4d-f9b577380083" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cuda3/FD_2D_cpu.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cuda/avg_cpu.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cuda/charts.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cuda/count.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cuda/cpu.plg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cuda/errors.plg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cuda2/gen_matrix.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lab3/c/mpi.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lab3/c/mpi" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cuda/plot.plg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cuda2/plot.plg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cuda/plot2.plg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cuda3/test_laplase.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cuda2/test_mul.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cuda/test_vectorSum_x_block_size.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cuda/vectorSum.cu" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cuda/x_size.plg" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\lab2 kody student\mpihosts-2pr-4rdz" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\lab2 kody student\mpihosts-3pr-1rdz" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\lab2 kody student\mpihosts-4pr-4rdz" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\lab2 kody student\mpihosts-5pr-1rdz" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\lab2 kody student\mpihosts-8pr-1rdz" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\lab2 kody student\run1" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\lab2 kody student\run2" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\lab2 kody student\run3" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\lab2 kody student\zad1.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\lab2 kody student\zad2.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\lab2 kody student\zad3.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\2015-04-14_15:25:01\rpi" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\2015-04-14_15:25:01\rpi.c" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\2015-04-14_15:25:01\rpi1.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\2015-04-14_15:27:33\rpi" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\2015-04-14_15:27:33\rpi.c" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\2015-04-14_15:27:33\rpi2.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\2015-04-14_15:44:16\rpi" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\2015-04-14_15:44:16\rpi.c" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\2015-04-14_15:44:16\rpi1_skal.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\2015-04-14_15:49:27\_rpi2_skal.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\2015-04-14_15:49:27\core.13000" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\2015-04-14_15:49:27\rpi" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\2015-04-14_15:49:27\rpi.c" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\2015-04-14_15:49:27\rpi2_skal.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\2015-04-14_18:00:59\rpi" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\2015-04-14_18:00:59\rpi.c" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\2015-04-14_18:00:59\rpi2_skal.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\pi\2015-04-14_15:18:25\rpi" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\pi\2015-04-14_15:18:25\rpi.c" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\pi\2015-04-14_15:18:25\rpi.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\pi\2015-04-14_15:25:01\rpi" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\pi\2015-04-14_15:25:01\rpi.c" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\pi\2015-04-14_15:25:01\rpi1.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\pi\2015-04-14_15:27:33\rpi" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\pi\2015-04-14_15:27:33\rpi.c" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\pi\2015-04-14_15:27:33\rpi2.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\pi\2015-04-14_15:44:16\rpi" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\pi\2015-04-14_15:44:16\rpi.c" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\pi\2015-04-14_15:44:16\rpi1_skal.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\pi\2015-04-14_15:49:27\_rpi2_skal.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\pi\2015-04-14_15:49:27\core.13000" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\pi\2015-04-14_15:49:27\rpi" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\pi\2015-04-14_15:49:27\rpi.c" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\pi\2015-04-14_15:49:27\rpi2_skal.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\pi\2015-04-14_18:00:59\core.61518" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\pi\2015-04-14_18:00:59\core.61519" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\pi\2015-04-14_18:00:59\rpi" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\pi\2015-04-14_18:00:59\rpi.c" afterPath="" />
+      <change type="DELETED" beforePath="C:\AGH\tpr\pi_wyniki\pi\2015-04-14_18:00:59\rpi2_skal.txt" afterPath="" />
+    </list>
+    <ignored path="tpr.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="tpr" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="test_mul.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cuda2/test_mul.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_laplase.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cuda3/test_laplase.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="plot.plg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cuda/plot.plg">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="14" column="88" selection-start-line="14" selection-start-column="88" selection-end-line="19" selection-end-column="94" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="results.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cuda2/results.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="plot.plg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cuda2/plot.plg">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FD_2D_global.cu" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cuda3/FD_2D_global.cu">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="56" column="11" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FD_2D_cpu.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cuda3/FD_2D_cpu.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.02454">
+              <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FD_2D_texture_pad.cu" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cuda3/FD_2D_texture_pad.cu">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-69.17242">
+              <caret line="142" column="14" selection-start-line="142" selection-start-column="14" selection-end-line="142" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FD_2D_shared.cu" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cuda3/FD_2D_shared.cu">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="charts.bat" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cuda2/charts.bat">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="60" selection-start-line="0" selection-start-column="60" selection-end-line="0" selection-end-column="60" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="c_zad1" />
+      </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/lab1/1.c" />
+        <option value="$PROJECT_DIR$/lab1/send_recv.c" />
+        <option value="$PROJECT_DIR$/lab1/test.sh" />
+        <option value="$PROJECT_DIR$/lab1/Makefile" />
+        <option value="$PROJECT_DIR$/lab1/c/test.sh" />
+        <option value="$PROJECT_DIR$/lab1/c/send_recv.c" />
+        <option value="$PROJECT_DIR$/lab3/c/zad1.c" />
+        <option value="$PROJECT_DIR$/lab3/c/mpi.c" />
+        <option value="$PROJECT_DIR$/cuda/test_vectorSum_x_block_size.sh" />
+        <option value="$PROJECT_DIR$/cuda/charts.bat" />
+        <option value="$PROJECT_DIR$/cuda/x_block_size/stats_200000.csv" />
+        <option value="$PROJECT_DIR$/cuda/test_vectorSum.sh" />
+        <option value="$PROJECT_DIR$/cuda/test_vectorSum_x_size_test.sh" />
+        <option value="$PROJECT_DIR$/cuda/avg_cpu.sh" />
+        <option value="$PROJECT_DIR$/cuda/plot2.plg" />
+        <option value="$PROJECT_DIR$/cuda/test_vectorSum_x_size.sh" />
+        <option value="$PROJECT_DIR$/cuda/vectorSum.cu" />
+        <option value="$PROJECT_DIR$/cuda/errors.plg" />
+        <option value="$PROJECT_DIR$/cuda/cpu.plg" />
+        <option value="$PROJECT_DIR$/cuda/x_size.plg" />
+        <option value="$PROJECT_DIR$/cuda2/matrixMultiplication.cu" />
+        <option value="$PROJECT_DIR$/cuda2/gen_matrix.sh" />
+        <option value="$PROJECT_DIR$/cuda2/test_mul.sh" />
+        <option value="$PROJECT_DIR$/cuda/plot.plg" />
+        <option value="$PROJECT_DIR$/cuda2/charts.bat" />
+        <option value="$PROJECT_DIR$/cuda2/plot.plg" />
+        <option value="$PROJECT_DIR$/cuda3/FD_2D_texture_pad.cu" />
+        <option value="$PROJECT_DIR$/cuda3/FD_2D_shared.cu" />
+        <option value="$PROJECT_DIR$/cuda3/test_laplase.sh" />
+        <option value="$PROJECT_DIR$/cuda3/FD_2D_global.cu" />
+        <option value="$PROJECT_DIR$/cuda3/FD_2D_cpu.cpp" />
+      </list>
+    </option>
+  </component>
+  <component name="NamedScopeManager">
+    <order />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1378" />
+    <option name="height" value="744" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tpr" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tpr" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tpr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tpr" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tpr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cuda3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tpr" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$1$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tpr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cuda2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="C:/" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="FullScreen" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\AGH\tpr\cuda3" />
+      <recent name="C:\AGH\tpr\cuda2" />
+      <recent name="C:\AGH\tpr\cuda" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="BashConfigurationType" factoryName="Bash">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="75309ed0-4fa6-4635-9f4d-f9b577380083" name="Default" comment="" />
+      <created>1426186476260</created>
+      <option name="number" value="Default" />
+      <updated>1426186476260</updated>
+    </task>
+    <task id="LOCAL-00001" summary="zad1 in c language&#10;">
+      <created>1426189360027</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1426189360027</updated>
+    </task>
+    <task id="LOCAL-00002" summary="fix time count">
+      <created>1426454538524</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1426454538524</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fix time count">
+      <created>1426454668978</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1426454668978</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fix time count">
+      <created>1426455269737</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1426455269737</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2716593" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14150943" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32861635" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32861635" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="zad1 in c language&#10;" />
+    <MESSAGE value="fix time count" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix time count" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/lab1/c/test.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lab1/c/send_recv.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lab1/c/test.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lab1/c/send_recv.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="33" selection-start-line="59" selection-start-column="33" selection-end-line="59" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lab3/c/mpi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="285" column="20" selection-start-line="285" selection-start-column="20" selection-end-line="285" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lab3/c/mpi.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="89" column="1" selection-start-line="89" selection-start-column="1" selection-end-line="89" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lab2/c/zad1.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lab2/c/zad2_bcast.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="64" column="1" selection-start-line="64" selection-start-column="1" selection-end-line="64" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lab2/c/zad2_scatter.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="63" column="24" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda/x_block_size/stats_300.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1025" column="11" selection-start-line="1025" selection-start-column="11" selection-end-line="1025" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda/charts.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.68">
+          <caret line="1" column="57" selection-start-line="1" selection-start-column="57" selection-end-line="1" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda/x_block_size/stats_200000.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1026" column="14" selection-start-line="1026" selection-start-column="14" selection-end-line="1026" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda/x_block_size/stats_100.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="40" selection-start-line="0" selection-start-column="40" selection-end-line="0" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda/x_size/stats_64.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda/x_size/stats_128.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda/x_size/stats_256.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda/x_size/stats_16.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="467" column="0" selection-start-line="467" selection-start-column="0" selection-end-line="467" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda/count.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda/avg_cpu.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.04">
+          <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda/test_vectorSum_x_block_size.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="19" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda/x_size/stats_1.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda/x_size/stats_1024.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda/plot2.plg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="12" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda/x_block_size/stats_5000.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="44" selection-start-line="0" selection-start-column="44" selection-end-line="0" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda/x_size_II/stats_1.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="588" column="40" selection-start-line="588" selection-start-column="40" selection-end-line="588" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda/x_size_II/stats_1024.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda/x_size_II/stats_256.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda/test_vectorSum_x_size.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda/errors.plg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda/cpu.plg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda/x_size.plg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda/deviceQuery.o58752076">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="121" column="53" selection-start-line="121" selection-start-column="53" selection-end-line="121" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda/vectorSum.cu">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda2/A.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda2/A_18x18.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda2/A_320x320.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8322368">
+          <caret line="102400" column="0" selection-start-line="102400" selection-start-column="0" selection-end-line="102400" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda2/B_18x18.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda2/gen_matrix.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="30" selection-start-line="4" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda2/matrixMultiplication.cu">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="105" column="75" selection-start-line="105" selection-start-column="15" selection-end-line="105" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda2/test.o58974427">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda2/test.o58974735">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda/plot.plg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="88" selection-start-line="14" selection-start-column="88" selection-end-line="19" selection-end-column="94" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda2/charts.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="60" selection-start-line="0" selection-start-column="60" selection-end-line="0" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda2/results.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda2/plot.plg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda2/test_mul.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda3/test_laplase.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda3/FD_2D_texture_pad.cu">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-69.17242">
+          <caret line="142" column="14" selection-start-line="142" selection-start-column="14" selection-end-line="142" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda3/FD_2D_shared.cu">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda3/FD_2D_global.cu">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="56" column="11" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cuda3/FD_2D_cpu.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.02454">
+          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

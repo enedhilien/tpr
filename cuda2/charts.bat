@@ -1,0 +1,1 @@
+START "" "C:\Program Files\gnuplot\bin\gnuplot.exe" plot.plg

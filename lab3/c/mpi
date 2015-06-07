@@ -1,0 +1,312 @@
+#!/bin/bash
+
+        KDIALOG=`which kdialog`
+#COMMON_OPTIONS="--yes-label Tak --no-label Nie --cancel-label Anuluj --continue-label Dalej"
+# dialog mi nie dzia?a w $(dialog), bo wy?wietla kody steruj?ce dla terminala.
+#nie chce mi si? my?le?, jak to zrobi? uniwersalnie
+#DIALOG_MENU_OPT="80 100 40"
+#DEFAULT_OPT=default-item
+DEFAULT_OPT=default
+TEST=0
+LAB=`hostname | cut -f 1-2 -d-`
+
+REPO=http://www.cs.put.poznan.pl/adanilecki/pr/mpi
+TEMATY="bank broadcast global-state mattern photo-scale pi passwd term-detect token-detect"
+
+if [ -z "$KDIALOG" ]; then
+        echo "Nie mog? odnale?? programu kdialog. Wychodz?"
+exit
+        fi
+
+function get_lab() {
+    if [ $TEST -eq 1 ]; then return 0; fi
+
+    echo Pobieram pliki dla laboratorium "$1"
+    wget ${REPO}/$1.tgz
+    if [ -e $1.tgz ]; then
+    mv $1.tgz ${HOME}/mpi
+    pushd ${HOME}/mpi/
+            mkdir $1 2>/dev/null
+    cd $1
+    rm -rf *
+            mv ../$1.tgz .
+            tar xvfz $1.tgz
+    rm $1.tgz
+    popd
+    return 0
+    fi
+    return 1
+}
+
+function init_env() {
+    cp -r ${HOME}/mpi ${HOME}/mpi-backup-`date +%F`
+    rm -rf ${HOME}/mpi 2>/dev/null
+    mkdir ${HOME}/mpi 2>/dev/null
+    get_lab first
+}
+
+function init_ssh() {
+    if [ $TEST -eq 1 ]; then return; fi
+    rm -f ${HOME}/.ssh/id_rsa 2>/dev/null
+    rm -f ${HOME}/.ssh/authorized_keys 2>/dev/null
+    ssh-keygen -f ${HOME}/.ssh/id_rsa -q -N ""
+    cp ${HOME}/.ssh/id_rsa.pub ${HOME}/.ssh/authorized_keys
+}
+
+mkdir ${HOME}/mpi 2>/dev/null
+
+# :: oznacza optional argument
+        OPCJE=`getopt -o "i:g:htlk" -l "help,get-lab:,list-lab,init:,init-ssh,test,init-keys" -- $@`
+
+eval set -- "$OPCJE"
+
+OPT=0
+while test "$1"; do
+case $1 in
+-h|--help)
+OPT=1
+echo Nast?puj?ce opcje s? dost?pne:
+        cat <<END
+-g <temat>, --get-lab <temat> : Pobranie plików potrzebnych do laboratorium na dany temat
+-l, --list-lab : wypisanie listy tematów laboratoriów
+-h, --help: pomoc, któr? czytasz
+-i, --init : inicjalizacja ?rodowiska
+--init-ssh : inicjalizacja kluczy publicznych i prywatnych ssh
+-t, --test : funkcje nie b?d? naprawd? wykonywane, pokazywane b?d? tylko okienka (w trybie graficznym). Tak samo b?dzie, je?eli -t b?dzie pierwsz? opcj? w trybie wsadowym.
+END
+        shift;;
+-g|--get-lab)
+TMP=0
+OPT=1
+for i in ${TEMATY};do
+if [ "$i" = "$2" ]; then
+        TMP=1
+get_lab $i
+break;
+fi
+        done
+if [ $TMP -eq 0 ]; then
+        echo Brak tematu o nazwie $2
+        fi
+unset TMP
+shift 2;;
+-i|--init) echo Inicjalizuj? "$2"
+OPT=1
+shift 2;;
+--init-ssh)
+OPT=1
+init_ssh
+        shift;;
+-k,--init-keys)
+OPT=1
+if [ "$2" = "lab-os" ]; then
+for i in `seq 1 15`; do
+ssh-keyscan -t rsa lab-os-$i >> ~/.ssh/known_hosts
+        done
+elif [ "$2" = "lab-net" ]; then
+for i in `seq 1 15`; do
+ssh-keyscan -t rsa lab-net-$i >> ~/.ssh/known_hosts
+        done
+fi
+        ssh-keyscan -t rsa $2 >> ~/.ssh/known_hosts
+        shift;;
+-l|--list-lab)
+OPT=1
+echo Lista dost?pnych laboratoriów do pobrania:
+        echo ${TEMATY}
+shift;;
+-t|--test)
+echo Funkcje w trybie graficznym nie b?d? wykonywane;
+echo Zostan? tylko pokazane okienka.
+TEST=1
+shift;;
+--) shift; break;;
+*) echo nieznana opcja; shift;;
+esac
+        done
+
+if [ $OPT -eq 1 ]; then
+        exit 0
+fi
+
+while true; do
+OPT=$($KDIALOG --title "Laboratorium Przetwarzanie Rozproszone, MPI" \
+	    --$DEFAULT_OPT lab \
+	    --menu "Wybierz pozycj? z pól podanych poni?ej.
+
+Program \"mpi\" zosta? napisany na potrzeby laboratorium z PR Politechniki Pozna?skiej
+i nie stanowi cz??ci standardowej instalacji linuksa.        " \
+                $DIALOG_MENU_OPT \
+		kompilacja "Pomoc na temat kompilowania i uruchamiania programów" \
+		ssh "Konfiguracja ssh na potrzeby laboratorium" \
+		lab "Pobieranie plików na potrzeby danego laboratorium"  \
+		pomoc "Pomoc na temat skryptu mpi" \
+		koniec "Wyj?cie" )
+if [ ! $? -eq 0 ]
+then exit 0
+fi
+
+case $OPT in
+kompilacja)
+$KDIALOG --title "Kompilowanie i uruchomianie programów w MPI" \
+		--msgbox "Kompilacja programów w MPI wykonywana jest przy pomocy programu mpicc, mpic++ albo mpiCC. Je?eli program jest napisany w C, i nazywa si? first.c, to jego kompilacja do pliku wynikowego o nazwie first.exe wygl?da nast?puj?co:
+
+mpicc first.c -o first.exe
+
+        Uruchomienie programu first.exe nast?puje w najprostszym przypadku tak:
+
+mpirun -np 6 first.exe
+
+        W przyk?adzie powy?ej uruchomionych zostanie sze?? procesów, wszystkie wykonuj?ce kod first.exe i wszystkie uruchomione na lokalnym w??le. W celu uruchomienia procesów na ró?nych w?z?ach, nale?y przygotowa? plik konfiguracyjny zawieraj?cy nazwy w?z?ów albo ich numery IP, po jednym w ka?dej linijce, a nast?pnie poda? go jako argument dla programu mpirun:
+
+        mpirun -hostfile PLIK_KONFIGURACYJNY -np 6 first.exe
+
+        Nazwy hostów mo?na te? poda? \"z palca\" w nast?puj?cy sposób:
+
+mpirun -H lab-os-1,lab-os-2 -np 6 first.exe
+
+        W przypadku powy?ej uruchomionych b?dzie 6 procesów, z tego trzy na w??le lab-os-1,a dalsze trzy na w??le lab-os-2.";;
+pomoc) $KDIALOG --title "Pomoc na temat skryptu mpi" --msgbox \
+"Skrypt mpi zosta? napisany na potrzeby laboratorium z PR, w celu u?atwienia przygotowania ?rodowiska do pracy z pakietem MPI oraz pobierania plików szkieletowych potrzebnych dla laboratorium.
+
+Posiada nast?puj?c? funkcjonalno??:
+
+• \"Inicjalizacja ?rodowiska\" Przygotowuje ?rodowisko na potrzeby laboratorium. Wystarczy wywo?a? jednokrotnie; ka?dorazowe uruchomienie inicjalizuje ?rodowisko ponownie, niszcz?c poprzednie zmiany. tak?e konfiguruje ssh.
+• \"Pomoc na temat kompilowania i uruchamiania programów\": Wy?wietla okienko omawiaj?ce metody kompilowania programów za pomoc? mpicc oraz ich uruchamianie przy pomocy mpirun.
+• \"Konfiguracja ssh na potrzeby laboratorium\" Konfiguruje ssh dla konta studenta, tak, by nie by?o wymagane podawanie has?a przy ka?dorazowym ??czeniu si? z innymi w?z?ami laboratorium.
+• \"Pobieranie plików na potrzeby danego laboratorium\" Pobiera szkielety programów oraz inne potrzebne pliki wymagane w laboratorium o zadanym temacie.
+• \"Pomoc na temat skryptu mpi\" Pomoc, któr? czytasz w tej chwili.
+• \"Wyj?cie\" Wyj?cie ze skryptu mpi.
+";;
+ssh)
+$KDIALOG --title "Wygenerowanie klucza publicznego ssh" \
+                --warningcontinuecancel "Czy jeste? pewien, ?e chcesz kontynuowa?? Je?eli wci?niesz \"Kontynuuj\", skasuj? pliki ${HOME}/.ssh/id_rsa, ${HOME}/.ssh/id_rsa.pub oraz ${HOME}/.ssh/authorized_keys i wygeneruj? je od nowa. Wykonam nast?puj?ce polecenia:
+
+rm -f ${HOME}/.ssh/id_rsa 2>/dev/null
+        rm -f ${HOME}/.ssh/authorized_keys 2>/dev/null
+        ssh-keygen -f ${HOME}/.ssh/id_rsa -q -N ""
+cp ${HOME}/.ssh/id_rsa.pub ${HOME}/.ssh/authorized_keys
+
+        Wci?nij \"Kontynuuj\" je?eli jeste? pewien"
+
+if [ $? -eq 0 ]; then
+#init_ssh
+if [ -e ${HOME}/.ssh/id_rsa ]; then
+        LISTA=""
+for i in `seq 1 15`;do
+LISTA="$LISTA $LAB-$i $LAB-$i on"
+done
+        $KDIALOG --title "Ok!" --msgbox "Wygl?da na to, ?e wszystko jest ok. Je?eli mimo tego przy ??czeniu si? na inne konto system pyta ciebie o has?o, zawo?aj prowadz?cego"
+LAB_LIST=$($KDIALOG --title "Zainicjalizowa? known_hosts?" --checklist "Czy chcesz, ?ebym teraz spróbowa? si? po??czy? z wszystkimi wybranymi poni?ej hostami?
+Odznacz te, które s? wy??czone.
+Wykonam dla ka?dego zaznaczonego w?z?a polecenie:
+
+ssh-keyscan -t rsa HOSTNAME >> ~/.ssh/known_hosts
+
+        Spowoduje to, ?e w?ze? zostanie dodanie do known_hosts.
+Je?eli mimo tego nie mo?esz si? ??czy? z hostami bez podawania has?a,
+        spróbuj wyda? polecenia poni?ej:
+
+        ssh-agent bash
+ssh-add
+
+        Wci?nij \"Anuluj\", je?eli nie chcesz si? po??czy? z hostami. " $LISTA)
+
+if [ $? -eq 0 ]; then
+for i in $LAB_LIST;do
+#ssh -o ConnectTimeout=1 $i true
+ssh-keyscan -t rsa ${i//\"/} >> ~/.ssh/known_hosts
+        done
+fi
+else
+$KDIALOG --title "Oops!" --error "Co? nie wysz?o, ale nie wiem co"
+fi
+else
+true;
+fi
+true;;
+init)
+$KDIALOG --title "Inicjalizacja ?rodowiska do pracy" \
+                --warningcontinuecancel "Czy jeste? pewien, ?e chcesz kontynuowa?? Je?eli wci?niesz \"Kontynuuj\", skasuj? pliki ${HOME}/mpi i wszystko, co si? w nich znajduje. Wykonam nast?puj?ce polecenia:
+
+cp -r ${HOME}/mpi ${HOME}/mpi-backup-`date +%F`
+rm -rf ${HOME}/mpi 2>/dev/null
+        wget ${REPO}/first.tgz
+
+        Wci?nij \"Kontynuuj\" je?eli jeste? pewien"
+
+if [ $? -eq 0 ]; then
+        init_env;;
+fi
+        lab) OPT=$($KDIALOG --title "Pobieranie plików do laboratorium" \
+            --combobox "Pliki zostan? ?ci?gni?te do katalogu \"mpi\" w katalogu domowym. Wybierz temat laboratorium z listy poni?ej" \
+            "Wszystkie" \
+            "?amanie hase?" \
+            "Zegary logiczne Matterna" \
+            "Wykrywanie zako?czenia" \
+            "Skalowanie zdj??" \
+            "Wyliczanie ? metod? Monte Carlo"\
+            "Rozg?aszanie"\
+            "Wykrywanie spójnego stanu globalnego"\
+            "Przelewy bankowe"\
+            "Wykrycie zagini?cia tokenu"\
+            --$DEFAULT_OPT "?amanie hase?")
+case $OPT in
+"Zegary logiczne Matterna")
+get_lab mattern
+if [ ! $? -eq 0 ]; then
+        $KDIALOG --title "B??d!" --error "Nie uda?o mi si? ?ci?gn?? pliku. \n Sprawd? po??czenie sieciowe; sprawd? tak?e, czy masz dosy? miejsca na dysku (polecenie quota -v)"
+fi;;
+"Wykrywanie zako?czenia")
+get_lab term-detect
+if [ ! $? -eq 0 ]; then
+        $KDIALOG --title "B??d!" --error "Nie uda?o mi si? ?ci?gn?? pliku. \n Sprawd? po??czenie sieciowe; sprawd? tak?e, czy masz dosy? miejsca na dysku (polecenie quota -v)"
+fi;;
+"Skalowanie zdj??")
+get_lab photo-scale
+if [ ! $? -eq 0 ]; then
+        $KDIALOG --title "B??d!" --error "Nie uda?o mi si? ?ci?gn?? pliku. \n Sprawd? po??czenie sieciowe; sprawd? tak?e, czy masz dosy? miejsca na dysku (polecenie quota -v)"
+fi;;
+"?amanie hase?")
+get_lab passwd
+if [ ! $? -eq 0 ]; then
+        $KDIALOG --title "B??d!" --error "Nie uda?o mi si? ?ci?gn?? pliku. \n Sprawd? po??czenie sieciowe; sprawd? tak?e, czy masz dosy? miejsca na dysku (polecenie quota -v)"
+fi;;
+"Wyliczanie ? metod? Monte Carlo")
+get_lab pi
+if [ ! $? -eq 0 ]; then
+        $KDIALOG --title "B??d!" --error "Nie uda?o mi si? ?ci?gn?? pliku. \n Sprawd? po??czenie sieciowe; sprawd? tak?e, czy masz dosy? miejsca na dysku (polecenie quota -v)"
+fi;;
+"Rozg?aszanie")
+get_lab broadcast
+if [ ! $? -eq 0 ]; then
+        $KDIALOG --title "B??d!" --error "Nie uda?o mi si? ?ci?gn?? pliku. \n Sprawd? po??czenie sieciowe; sprawd? tak?e, czy masz dosy? miejsca na dysku (polecenie quota -v)"
+fi;;
+"Wykrycie zagini?cia tokenu")
+get_lab token-detect
+if [ ! $? -eq 0 ]; then
+        $KDIALOG --title "B??d!" --error "Nie uda?o mi si? ?ci?gn?? pliku. \n Sprawd? po??czenie sieciowe; sprawd? tak?e, czy masz dosy? miejsca na dysku (polecenie quota -v)"
+fi;;
+"Przelewy bankowe")
+get_lab bank
+if [ ! $? -eq 0 ]; then
+        $KDIALOG --title "B??d!" --error "Nie uda?o mi si? ?ci?gn?? pliku. \n Sprawd? po??czenie sieciowe; sprawd? tak?e, czy masz dosy? miejsca na dysku (polecenie quota -v)"
+fi;;
+"Wykrywanie spójnego stanu globalnego")
+get_lab global-state
+if [ ! $? -eq 0 ]; then
+        $KDIALOG --title "B??d!" --error "Nie uda?o mi si? ?ci?gn?? pliku. \n Sprawd? po??czenie sieciowe; sprawd? tak?e, czy masz dosy? miejsca na dysku (polecenie quota -v)"
+fi;;
+"Wszystkie")
+for i in ${TEMATY}
+do get_lab $i
+if [ ! $? -eq 0 ]; then
+        $KDIALOG --title "B??d!" --error "Nie uda?o mi si? ?ci?gn?? pliku. \n Sprawd? po??czenie sieciowe; sprawd? tak?e, czy masz dosy? miejsca na dysku (polecenie quota -v)"
+break
+fi
+        done;;
+esac
+true;;
+koniec) exit 0;;
+esac
+        done
